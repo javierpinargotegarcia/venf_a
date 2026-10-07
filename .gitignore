@@ -1,0 +1,7 @@
+target/
+*.class
+config.properties
+data/
+.idea/
+*.iml
+.vscode/

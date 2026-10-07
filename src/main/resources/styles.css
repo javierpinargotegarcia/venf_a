@@ -1,0 +1,571 @@
+/* =====================================================================
+   Hoja de estilos del Sistema de Inventario de Mercaderia
+
+   Paleta:
+     azul profundo  #0f2f5c  titulos, cabeceras de tabla
+     azul primario  #2563eb  acciones principales, foco
+     fondo          #eef2f7  superficie general
+     verde          #15803d  Excel / confirmaciones
+     rojo           #dc2626  PDF, acciones destructivas
+     texto          #1e293b / #64748b
+   ===================================================================== */
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #eef2f7;
+}
+
+/* Color base de todas las etiquetas: declarado antes que cualquier regla
+   especifica (.titulo-vista, .etiqueta-ruta, .kpi-etiqueta, ...) para no
+   pisarlas en la cascada. */
+.label {
+    -fx-text-fill: #1e293b;
+}
+
+/* ------------------------------------------------------------------ */
+/*                            LOGIN                                    */
+/* ------------------------------------------------------------------ */
+
+.login-raiz {
+    -fx-background-color: linear-gradient(to bottom right,
+            #0b1f3a 0%, #16406f 45%, #2563eb 100%);
+}
+
+.login-tarjeta {
+    -fx-background-color: white;
+    -fx-background-radius: 16;
+    -fx-border-color: #e5eaf2;
+    -fx-border-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(8, 20, 40, 0.35), 30, 0.3, 0, 10);
+    /* El StackPane del login estira a sus hijos: sin tope maximo la tarjeta
+       cubriria todo el degradado del fondo. */
+    -fx-pref-width: 430px;
+    -fx-max-width: 470px;
+    -fx-max-height: 640px;
+}
+
+.login-logo {
+    -fx-alignment: center;
+    -fx-min-width: 62;
+    -fx-min-height: 62;
+    -fx-pref-width: 62;
+    -fx-pref-height: 62;
+    -fx-max-width: 62;
+    -fx-max-height: 62;
+    -fx-background-color: linear-gradient(to bottom right, #2563eb, #16406f);
+    -fx-background-radius: 50%;
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 237, 0.45), 14, 0.5, 0, 3);
+}
+
+.login-logo .icono {
+    -fx-fill: white;
+}
+
+.login-titulo {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f2f5c;
+    -fx-alignment: center;
+}
+
+.login-subtitulo {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+    -fx-alignment: center;
+}
+
+.login-modo {
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+    -fx-alignment: center;
+}
+
+.login-error {
+    -fx-text-fill: #dc2626;
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+}
+
+.login-ayuda {
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+    -fx-alignment: center;
+}
+
+.etiqueta-campo {
+    -fx-text-fill: #475569;
+    -fx-font-weight: bold;
+}
+
+/* ------------------------------------------------------------------ */
+/*                       BARRAS Y MENU LATERAL                         */
+/* ------------------------------------------------------------------ */
+
+.barra-superior, .barra-usuario {
+    -fx-background-color: white;
+}
+
+.barra-superior {
+    -fx-border-color: transparent transparent #e5eaf2 transparent;
+}
+
+.titulo-app {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f2f5c;
+    -fx-graphic-text-gap: 9;
+}
+
+.titulo-app .icono {
+    -fx-fill: #2563eb;
+}
+
+.etiqueta-usuario {
+    -fx-text-fill: #475569;
+}
+
+.etiqueta-modo {
+    -fx-background-color: #eff6ff;
+    -fx-background-radius: 12;
+    -fx-padding: 3 11 3 11;
+    -fx-text-fill: #1d4ed8;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+/* Inscrita en .etiqueta-modo para ganar en cascada cuando esta activa. */
+.etiqueta-modo.etiqueta-mysql {
+    -fx-background-color: #ecfdf5;
+    -fx-text-fill: #059669;
+}
+
+.menu-lateral {
+    -fx-background-color: linear-gradient(to bottom, #102c4e, #0d2440);
+}
+
+/* Prefijados con .menu-lateral para que ganen a las reglas genericas
+   .button { fondo blanco } y .button:hover { icono azul } de mas abajo. */
+.menu-lateral .boton-menu {
+    -fx-background-color: transparent;
+    -fx-background-radius: 9;
+    -fx-border-color: transparent;
+    -fx-text-fill: #c3d4ea;
+    -fx-padding: 10 12 10 12;
+    -fx-alignment: center-left;
+    -fx-graphic-text-gap: 11;
+    -fx-cursor: hand;
+    -fx-max-width: 1000px;
+}
+
+.menu-lateral .boton-menu .icono {
+    -fx-fill: #7fa8dd;
+}
+
+.menu-lateral .boton-menu:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.10);
+    -fx-text-fill: white;
+}
+
+.menu-lateral .boton-menu:hover .icono {
+    -fx-fill: white;
+}
+
+.menu-lateral .boton-menu:focused {
+    -fx-background-color: #1d4ed8;
+    -fx-text-fill: white;
+}
+
+.menu-lateral .boton-menu:focused .icono {
+    -fx-fill: white;
+}
+
+.menu-lateral .boton-migrar {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 9;
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 11;
+    -fx-font-weight: bold;
+    -fx-graphic-text-gap: 8;
+    -fx-alignment: center;
+    -fx-cursor: hand;
+}
+
+.menu-lateral .boton-migrar .icono {
+    -fx-fill: white;
+}
+
+.menu-lateral .boton-migrar:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.menu-lateral .boton-migrar:hover .icono {
+    -fx-fill: white;
+}
+
+.menu-lateral .separator *.line {
+    -fx-border-color: rgba(255, 255, 255, 0.14);
+}
+
+.etiqueta-ruta {
+    -fx-text-fill: #7e9ac0;
+    -fx-font-size: 10.5px;
+    -fx-padding: 6 2 0 2;
+}
+
+.panel-contenido {
+    -fx-background-color: #eef2f7;
+}
+
+.barra-inferior {
+    -fx-background-color: white;
+    -fx-border-color: #e5eaf2 transparent transparent transparent;
+}
+
+.etiqueta-pie, .etiqueta-suave {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11.5px;
+}
+
+/* ------------------------------------------------------------------ */
+/*                             VISTAS                                  */
+/* ------------------------------------------------------------------ */
+
+.titulo-vista {
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f2f5c;
+}
+
+.subtitulo-vista {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.titulo-vista .icono, .subtitulo-vista .icono {
+    -fx-fill: #2563eb;
+}
+
+.tarjeta {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #e5eaf2;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.06), 14, 0.4, 0, 3);
+}
+
+.tarjeta-kpi {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #e5eaf2;
+    -fx-border-radius: 12;
+    -fx-padding: 16 10 16 10;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.07), 14, 0.4, 0, 3);
+}
+
+.tarjeta-kpi .icono {
+    -fx-fill: #2563eb;
+}
+
+.kpi-valor {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f2f5c;
+    -fx-graphic-text-gap: 7;
+}
+
+.kpi-etiqueta {
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+
+.kpi-verde .kpi-valor   { -fx-text-fill: #15803d; }
+.kpi-verde .icono       { -fx-fill: #15803d; }
+.kpi-cian .kpi-valor    { -fx-text-fill: #0e7490; }
+.kpi-cian .icono        { -fx-fill: #0e7490; }
+.kpi-ambar .kpi-valor   { -fx-text-fill: #b45309; }
+.kpi-ambar .icono       { -fx-fill: #b45309; }
+.kpi-alerta .kpi-valor  { -fx-text-fill: #dc2626; }
+.kpi-alerta .icono      { -fx-fill: #dc2626; }
+
+/* ------------------------------------------------------------------ */
+/*                            BOTONES                                  */
+/* ------------------------------------------------------------------ */
+
+.button {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 8;
+    -fx-border-color: #cbd5e1;
+    -fx-border-insets: 0;
+    -fx-border-radius: 8;
+    -fx-padding: 8 14 8 14;
+    -fx-graphic-text-gap: 8;
+    -fx-cursor: hand;
+    -fx-effect: none;
+}
+
+.button:hover {
+    -fx-background-color: #f1f5f9;
+    -fx-border-color: #94a3b8;
+}
+
+.button:armed {
+    -fx-background-color: #e2e8f0;
+}
+
+.button:focused {
+    -fx-border-color: #2563eb;
+}
+
+.button:focused:hover {
+    -fx-background-color: #f1f5f9;
+    -fx-border-color: #2563eb;
+}
+
+.boton-primario {
+    -fx-background-color: #2563eb;
+    -fx-border-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 237, 0.35), 9, 0.4, 0, 2);
+}
+
+.boton-primario:hover {
+    -fx-background-color: #1d4ed8;
+    -fx-border-color: #1d4ed8;
+}
+
+.boton-primario:armed {
+    -fx-background-color: #1e40af;
+    -fx-border-color: #1e40af;
+}
+
+.boton-secundario {
+    -fx-background-color: #f8fafc;
+}
+
+.boton-peligro {
+    -fx-background-color: white;
+    -fx-border-color: #fca5a5;
+    -fx-text-fill: #dc2626;
+}
+
+.boton-peligro:hover {
+    -fx-background-color: #dc2626;
+    -fx-border-color: #dc2626;
+    -fx-text-fill: white;
+}
+
+.boton-peligro:armed {
+    -fx-background-color: #b91c1c;
+    -fx-border-color: #b91c1c;
+    -fx-text-fill: white;
+}
+
+.boton-pdf {
+    -fx-background-color: #dc2626;
+    -fx-border-color: #dc2626;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.boton-pdf:hover {
+    -fx-background-color: #b91c1c;
+    -fx-border-color: #b91c1c;
+}
+
+.boton-excel {
+    -fx-background-color: #15803d;
+    -fx-border-color: #15803d;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.boton-excel:hover {
+    -fx-background-color: #166534;
+    -fx-border-color: #166534;
+}
+
+/* ------------------------------------------------------------------ */
+/*                     CAMPOS DE TEXTO / COMBOS                        */
+/* ------------------------------------------------------------------ */
+
+.text-field, .password-field, .combo-box, .date-picker {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8;
+    -fx-border-insets: 0;
+    -fx-padding: 6 8 6 8;
+}
+
+.text-field:focused, .password-field:focused,
+.combo-box:focused, .date-picker:focused {
+    -fx-border-color: #2563eb;
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 237, 0.30), 7, 0.4, 0, 0);
+}
+
+.text-field .prompt-text {
+    -fx-fill: #94a3b8;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #eff6ff;
+    -fx-text-fill: #0f2f5c;
+}
+
+.check-box {
+    -fx-text-fill: #475569;
+}
+
+/* ------------------------------------------------------------------ */
+/*                              TABLAS                                 */
+/* ------------------------------------------------------------------ */
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #e5eaf2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-table-cell-border-color: #eef2f7;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #16406f;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.table-view .corner, .table-view .filler {
+    -fx-background-color: #16406f;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #eef2f7 transparent;
+    -fx-padding: 7;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f8fafc;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #dbeafe;
+    -fx-text-fill: #0f2f5c;
+}
+
+.table-row-cell:selected .cell {
+    -fx-text-fill: #0f2f5c;
+    -fx-font-weight: bold;
+}
+
+.table-view .cell {
+    -fx-text-fill: #1e293b;
+    -fx-padding: 6 8 6 8;
+}
+
+.table-view .cell:hover {
+    -fx-background-color: #eff6ff;
+}
+
+.table-view .placeholder .label {
+    -fx-text-fill: #94a3b8;
+}
+
+/* ------------------------------------------------------------------ */
+/*                    ICONOS (clase .icono)                            */
+/* ------------------------------------------------------------------ */
+
+/* Color por defecto: boton normal, etiquetas sueltas... */
+.icono {
+    -fx-fill: #475569;
+    -fx-stroke: transparent;
+}
+
+/* El hover del boton generico tiñe el icono de azul. Las variantes
+   (primario, peligro, pdf...) se declaran despues para ganar en cascada. */
+.button:hover .icono {
+    -fx-fill: #2563eb;
+}
+
+.boton-primario .icono,
+.boton-primario:hover .icono,
+.boton-migrar .icono,
+.boton-migrar:hover .icono,
+.boton-pdf .icono,
+.boton-pdf:hover .icono,
+.boton-excel .icono,
+.boton-excel:hover .icono {
+    -fx-fill: white;
+}
+
+.boton-peligro .icono {
+    -fx-fill: #dc2626;
+}
+
+.boton-peligro:hover .icono,
+.boton-peligro:armed .icono {
+    -fx-fill: white;
+}
+
+/* ------------------------------------------------------------------ */
+/*                          SCROLLBARS / VARIOS                        */
+/* ------------------------------------------------------------------ */
+
+.separator *.line {
+    -fx-border-color: #e5eaf2;
+    -fx-border-width: 1;
+}
+
+.tooltip {
+    -fx-background-color: #0f2f5c;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-font-size: 12px;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #cbd5e1;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #94a3b8;
+}
+
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}

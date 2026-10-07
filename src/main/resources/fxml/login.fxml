@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.inventario.ui.Icono?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="raiz" alignment="CENTER" styleClass="login-raiz"
+           xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.inventario.ui.ControladorLogin">
+
+    <VBox alignment="CENTER" spacing="14" styleClass="login-tarjeta">
+        <padding>
+            <Insets bottom="34" left="44" right="44" top="34"/>
+        </padding>
+
+        <StackPane alignment="CENTER" styleClass="login-logo">
+            <Icono nombre="caja" tamano="30"/>
+        </StackPane>
+
+        <Label styleClass="login-titulo" text="SISTEMA DE INVENTARIO"/>
+        <Label styleClass="login-subtitulo" text="Mercaderia · Productos · Stock"/>
+        <Label fx:id="etiquetaModo" styleClass="login-modo" text=""/>
+
+        <Region prefHeight="6"/>
+
+        <GridPane hgap="10" vgap="12">
+            <Label styleClass="etiqueta-campo" text="Usuario"/>
+            <TextField fx:id="campoUsuario" GridPane.columnIndex="1" promptText="admin"/>
+
+            <Label GridPane.rowIndex="1" styleClass="etiqueta-campo" text="Contrasena"/>
+            <PasswordField fx:id="campoClave" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                           onAction="#entrar" promptText="********"/>
+        </GridPane>
+
+        <Label fx:id="etiquetaError" maxWidth="320" styleClass="login-error" text="" wrapText="true"/>
+
+        <Button defaultButton="true" maxWidth="Infinity" onAction="#entrar"
+                styleClass="boton-primario" text="Entrar">
+            <graphic>
+                <Icono nombre="entrar"/>
+            </graphic>
+        </Button>
+
+        <HBox alignment="CENTER">
+            <Label styleClass="login-ayuda"
+                   text="Primer acceso: admin / admin123"/>
+        </HBox>
+    </VBox>
+</StackPane>

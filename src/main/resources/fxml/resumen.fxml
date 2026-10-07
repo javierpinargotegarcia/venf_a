@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.inventario.ui.Icono?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="raiz" spacing="12" styleClass="vista" xmlns="http://javafx.com/javafx/24"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.inventario.ui.ControladorResumen">
+
+    <padding>
+        <Insets bottom="16" left="18" right="18" top="16"/>
+    </padding>
+
+    <Label styleClass="titulo-vista" text="Resumen del inventario"/>
+
+    <GridPane hgap="12" vgap="12">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
+            <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
+            <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
+            <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
+            <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <VBox alignment="CENTER" spacing="4" styleClass="tarjeta-kpi" GridPane.columnIndex="0">
+            <Label fx:id="kpiProductos" alignment="CENTER" styleClass="kpi-valor" text="0">
+                <graphic><Icono nombre="lista" tamano="24"/></graphic>
+            </Label>
+            <Label styleClass="kpi-etiqueta" text="Productos activos"/>
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="4" styleClass="tarjeta-kpi kpi-cian" GridPane.columnIndex="1">
+            <Label fx:id="kpiUnidades" alignment="CENTER" styleClass="kpi-valor" text="0">
+                <graphic><Icono nombre="caja" tamano="24"/></graphic>
+            </Label>
+            <Label styleClass="kpi-etiqueta" text="Unidades en stock"/>
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="4" styleClass="tarjeta-kpi kpi-verde" GridPane.columnIndex="2">
+            <Label fx:id="kpiValor" alignment="CENTER" styleClass="kpi-valor" text="0,00">
+                <graphic><Icono nombre="dinero" tamano="24"/></graphic>
+            </Label>
+            <Label styleClass="kpi-etiqueta" text="Valor del inventario"/>
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="4" styleClass="tarjeta-kpi kpi-alerta" GridPane.columnIndex="3">
+            <Label fx:id="kpiStockBajo" alignment="CENTER" styleClass="kpi-valor" text="0">
+                <graphic><Icono nombre="alerta" tamano="24"/></graphic>
+            </Label>
+            <Label styleClass="kpi-etiqueta" text="Con stock bajo"/>
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="4" styleClass="tarjeta-kpi kpi-ambar" GridPane.columnIndex="4">
+            <Label fx:id="kpiMovimientos" alignment="CENTER" styleClass="kpi-valor" text="0">
+                <graphic><Icono nombre="historial" tamano="24"/></graphic>
+            </Label>
+            <Label styleClass="kpi-etiqueta" text="Movimientos hoy"/>
+        </VBox>
+    </GridPane>
+
+    <Separator/>
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label styleClass="subtitulo-vista" text="Productos con stock bajo"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="etiquetaStockBajo" styleClass="etiqueta-suave" text=""/>
+    </HBox>
+
+    <TableView fx:id="tablaStockBajo" prefHeight="180" VBox.vgrow="SOMETIMES">
+        <columns>
+            <TableColumn fx:id="colBajoCodigo" prefWidth="130" text="Codigo"/>
+            <TableColumn fx:id="colBajoProducto" prefWidth="260" text="Producto"/>
+            <TableColumn fx:id="colBajoStock" prefWidth="90" text="Stock"/>
+            <TableColumn fx:id="colBajoMinimo" prefWidth="90" text="Minimo"/>
+            <TableColumn fx:id="colBajoSugerido" prefWidth="110" text="A reponer"/>
+        </columns>
+    </TableView>
+
+    <Label styleClass="subtitulo-vista" text="Ultimos movimientos"/>
+
+    <TableView fx:id="tablaMovimientos" prefHeight="220" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colMovFecha" prefWidth="140" text="Fecha"/>
+            <TableColumn fx:id="colMovTipo" prefWidth="90" text="Tipo"/>
+            <TableColumn fx:id="colMovProducto" prefWidth="240" text="Producto"/>
+            <TableColumn fx:id="colMovCantidad" prefWidth="90" text="Cantidad"/>
+            <TableColumn fx:id="colMovResultado" prefWidth="130" text="Stock resultante"/>
+            <TableColumn fx:id="colMovMotivo" prefWidth="240" text="Motivo"/>
+        </columns>
+    </TableView>
+</VBox>
